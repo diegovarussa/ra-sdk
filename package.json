@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "start": "ts-node src/index.ts",
+    "build": "npx tsc",
     "test": "jest"
   },
   "keywords": [
@@ -23,8 +24,17 @@
   ],
   "author": "diegovarussa@gmail.com",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/diegovarussa/ra-sdk.git"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "preset": "ts-jest"
+  },
   "devDependencies": {
     "@types/jest": "^29.2.4",
+    "dotenv": "^16.0.3",
     "jest": "^29.3.1",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
