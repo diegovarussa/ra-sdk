@@ -1,0 +1,33 @@
+{
+  "name": "ra-sdk",
+  "version": "0.0.1",
+  "description": "SDK for easy access of the https://retroachievements.org/ API",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "jest"
+  },
+  "keywords": [
+    "RetroAchievements",
+    "Retro",
+    "Achievements",
+    "SDK",
+    "API",
+    "TypeScript",
+    "Node.js",
+    "Browser"
+  ],
+  "author": "diegovarussa@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.2.4",
+    "jest": "^29.3.1",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  }
+}
