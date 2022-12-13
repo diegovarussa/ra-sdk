@@ -1,4 +1,5 @@
 import AchievementCount from "./models/AchievementCount";
+import AchievementDistribution, { FLAG_FILTER, TYPE_FILTER } from "./models/AchievementDistribution";
 import Game from "./models/Game";
 import GameExtended from "./models/GameExtended";
 
@@ -61,7 +62,7 @@ export default class Client {
     }
 
     /**
-     * Returns extended information about a game
+     * Return the achievements associated to a game
      * 
      * @param id Game ID
      */
@@ -69,6 +70,22 @@ export default class Client {
         const url = this._buildUrl('AchievementCount', { i: id });
         const result = await this._requestApi(url);
         const object = new AchievementCount(result);
+        return object;
+    }
+
+    /**
+     * Returns a mapping of the number of players who have earned each quantity of achievements for a game
+     * 
+     * @param id Game ID
+     * @param type Filter by type
+     * @param flag Filter by flag
+     */
+    public async getAchievementDistribution(id: number, type?: TYPE_FILTER, flag?: FLAG_FILTER) {
+        type = type || TYPE_FILTER.ALL;
+        flag = flag || FLAG_FILTER.CORE_ACHIEVEMENTS;
+        const url = this._buildUrl('AchievementDistribution', { i: id , h: type, f: flag});
+        const result = await this._requestApi(url);
+        const object = new AchievementDistribution(result);
         return object;
     }
 }

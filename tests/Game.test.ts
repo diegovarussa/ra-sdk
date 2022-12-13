@@ -1,21 +1,10 @@
-import Client from "../src/Client"
+import { client, gameId } from "../src/config";
 import Game from "../src/models/Game";
-import * as dotenv from 'dotenv';
-dotenv.config();
-
-let client: Client;
-let game: Game;
-
-beforeAll(async () => {
-    const userName = process.env.USER_NAME as string;
-    const webApiKey = process.env.WEB_API_KEY as string;
-    client = new Client(userName, webApiKey);
-    game = await client.getGame(515);
-})
 
 describe('Game extended test', function () {
 
     it('should have correct API result', async () => {
+        const game = await client.getGame(gameId);
         expect(game).toBeInstanceOf(Game);
         expect(typeof game.id).toStrictEqual('number');
         expect(typeof game.title).toStrictEqual('string');

@@ -1,21 +1,10 @@
-import Client from "../src/Client"
-import * as dotenv from 'dotenv';
+import { client, gameId } from "../src/config";
 import AchievementCount from "../src/models/AchievementCount";
-dotenv.config();
-
-let client: Client;
-let achievementCount: AchievementCount;
-
-beforeAll(async () => {
-    const userName = process.env.USER_NAME as string;
-    const webApiKey = process.env.WEB_API_KEY as string;
-    client = new Client(userName, webApiKey);
-    achievementCount = await client.getAchievementCount(515);
-})
 
 describe('Achievement count test', function () {
 
-    it.only('should have correct API result', async () => {
+    it('should have correct API result', async () => {
+        const achievementCount = await client.getAchievementCount(gameId);
         expect(achievementCount).toBeInstanceOf(AchievementCount);
         expect(typeof achievementCount.gameId).toStrictEqual('number');
         for (let i = 0; i < achievementCount.achievementIds.length; i++) {
