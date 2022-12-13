@@ -1,6 +1,9 @@
 import Base from "./Base";
 
-class Game extends Base {
+/**
+ * Returns information about a game
+ */
+export default class Game extends Base {
     /** Game ID */
     id: number;
     /** Name of the game */
@@ -57,5 +60,3 @@ class Game extends Base {
         this.released = new Date(json.Released);
     }
 }
-
-export default Game;

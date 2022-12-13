@@ -1,3 +1,4 @@
+import AchievementCount from "./models/AchievementCount";
 import Game from "./models/Game";
 import GameExtended from "./models/GameExtended";
 
@@ -56,6 +57,18 @@ export default class Client {
         const url = this._buildUrl('GameExtended', { i: id });
         const result = await this._requestApi(url);
         const object = new GameExtended(result);
+        return object;
+    }
+
+    /**
+     * Returns extended information about a game
+     * 
+     * @param id Game ID
+     */
+    public async getAchievementCount(id: number) {
+        const url = this._buildUrl('AchievementCount', { i: id });
+        const result = await this._requestApi(url);
+        const object = new AchievementCount(result);
         return object;
     }
 }

@@ -2,6 +2,9 @@ import Achievement from "./Achievement";
 import Claim from "./Claim";
 import Game from "./Game";
 
+/**
+ * Return extended information about a game
+ */
 export default class GameExtended extends Game {
     isFinal: boolean;
     /** Count of core achievements associated to the game */
