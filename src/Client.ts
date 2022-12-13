@@ -1,4 +1,5 @@
 import Game from "./models/Game";
+import GameExtended from "./models/GameExtended";
 
 export default class Client {
     private _base_url = 'https://retroachievements.org';
@@ -42,12 +43,19 @@ export default class Client {
     public async getGame(id: number) {
         const url = this._buildUrl('Game', { i: id });
         const result = await this._requestApi(url);
-        const game = new Game(result);
-        return game;
+        const object = new Game(result);
+        return object;
     }
 
+    /**
+     * Returns extended information about a game
+     * 
+     * @param id Game ID
+     */
     public async getGameExtended(id: number) {
         const url = this._buildUrl('GameExtended', { i: id });
-        return await this._requestApi(url);
+        const result = await this._requestApi(url);
+        const object = new GameExtended(result);
+        return object;
     }
 }

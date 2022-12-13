@@ -15,8 +15,8 @@ class Game extends Base {
     console: string;
     /** Unique identifier of the official forum topic for the game */
     forumTopicId: number;
-    /** always "0" (or null?) */
-    flags: number | null;
+    /** Expect to be always 0 (zero) */
+    flags: number;
     /** Site-relative path to the game's icon image */
     gameIcon: string;
     /** Site-relative path to the game's icon image */
@@ -45,7 +45,7 @@ class Game extends Base {
         this.consoleName = json.ConsoleName;
         this.console = json.Console;
         this.forumTopicId = Number(json.ForumTopicID);
-        this.flags = Number.isInteger(json.Flags) ? Number(json.Flags) : null;
+        this.flags = (json.Flags === null) ? 0 : Number(json.Flags);
         this.gameIcon = `${this.mediaBaseUrl}${json.GameIcon}`;
         this.imageIcon = `${this.mediaBaseUrl}${json.ImageIcon}`;
         this.imageTitle = `${this.mediaBaseUrl}${json.ImageTitle}`;
