@@ -12,8 +12,10 @@ const gameId = Number(process.env.GAME_ID as string);
 const achievementId = Number(process.env.ACHIEVEMENT_ID as string);
 /** Star date used to filter range (Unix Timestamp) */
 const fromDate = new Date(process.env.FROM_DATE as string).getTime() / 1000;
-/** End date used to filter range (Unix Timestamp)  */
+/** End date used to filter range (Unix Timestamp) */
 const toDate = new Date(process.env.TO_DATE as string).getTime() / 1000;
+/** To filter by day (YYYY-MM-DD) */
+const dayFilter = process.env.DAY as string;
 /** Client instance */
 const client = new Client(userName, webApiKey);
 
@@ -23,5 +25,6 @@ export {
     achievementId,
     fromDate,
     toDate,
+    dayFilter,
     client,
 }

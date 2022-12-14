@@ -1,4 +1,4 @@
-import Achievement from "./Achievement";
+import Achievement from "./GameAchievement";
 import Claim from "./Claim";
 import Game from "./Game";
 

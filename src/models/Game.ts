@@ -1,9 +1,7 @@
-import Base from "./Base";
-
 /**
  * Returns information about a game
  */
-export default class Game extends Base {
+export default class Game {
     /** Game ID */
     id: number;
     /** Name of the game */
@@ -40,7 +38,6 @@ export default class Game extends Base {
     released: Date;
 
     constructor(json: any) {
-        super();
         this.id = Number(json.ID);
         this.title = json.Title;
         this.gameTitle = json.GameTitle;
@@ -49,11 +46,11 @@ export default class Game extends Base {
         this.console = json.Console;
         this.forumTopicId = Number(json.ForumTopicID);
         this.flags = (json.Flags === null) ? 0 : Number(json.Flags);
-        this.gameIcon = `${this.mediaBaseUrl}${json.GameIcon}`;
-        this.imageIcon = `${this.mediaBaseUrl}${json.ImageIcon}`;
-        this.imageTitle = `${this.mediaBaseUrl}${json.ImageTitle}`;
-        this.imageInGame = `${this.mediaBaseUrl}${json.ImageIngame}`;
-        this.imageBoxArt = `${this.mediaBaseUrl}${json.ImageBoxArt}`;
+        this.gameIcon = json.GameIcon;
+        this.imageIcon = json.ImageIcon;
+        this.imageTitle =json.ImageTitle;
+        this.imageInGame = json.ImageIngame;
+        this.imageBoxArt = json.ImageBoxArt;
         this.publisher = json.Publisher;
         this.developer = json.Developer;
         this.genre = json.Genre;

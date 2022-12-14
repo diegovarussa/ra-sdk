@@ -1,12 +1,12 @@
-import { client, fromDate, toDate, userName } from "../src/config";
+import { client, dayFilter, userName } from "../src/config";
 import UserAchievement from "../src/models/UserAchievement";
 
-describe('Achievement earned between date test', function () {
+describe('Achievement earned on day test', function () {
 
     it('should have correct API result', async () => {
-        const achievementsEarnedBetween = await client.getAchievementsEarnedBetween(userName, fromDate, toDate);
-        for (let i = 0; i < achievementsEarnedBetween.length; i++) {
-            const current = achievementsEarnedBetween[i];
+        const achievementsEarnedOnDay = await client.getAchievementsEarnedOnDay(userName, dayFilter);
+        for (let i = 0; i < achievementsEarnedOnDay.length; i++) {
+            const current = achievementsEarnedOnDay[i];
             expect(current).toBeInstanceOf(UserAchievement);
             expect(typeof current.achievementId).toStrictEqual('number');
             expect(typeof current.author).toStrictEqual('string');

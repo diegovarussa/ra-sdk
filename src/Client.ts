@@ -1,10 +1,10 @@
 import AchievementCount from "./models/AchievementCount";
 import AchievementDistribution, { FLAG_FILTER, TYPE_FILTER } from "./models/AchievementDistribution";
 import AchievementOfTheWeek from "./models/AchievementOfTheWeek";
-import AchievementsEarnedBetween from "./models/AchievementsEarnedBetween";
 import AchievementUnlocks from "./models/AchievementUnlocks";
 import Game from "./models/Game";
 import GameExtended from "./models/GameExtended";
+import UserAchievement from "./models/UserAchievement";
 
 export default class Client {
     private _base_url = 'https://retroachievements.org';
@@ -12,6 +12,7 @@ export default class Client {
     private _pathname_suffix = '.php';
     private _userName: string;
     private _webApiKey: string;
+    public BASE_MEDIA_URL = 'https://media.retroachievements.org';
 
     public constructor(userName: string, webApiKey: string) {
         this._userName = userName;
@@ -116,15 +117,35 @@ export default class Client {
     }
 
     /**
-     * Return the unlocks of the achievement
+     * Returns achievements earned by a user between two timestamps
      * @param user Achievement user
      * @param from Unix Timestamp to date to start query
      * @param to Unix Timestamp to date to end query
      */
-    public async getAchievementsEarnedBetween(user: string, from: number, to: number) {
-        const url = this._buildUrl('AchievementsEarnedBetween', {u: user, f: from, t: to });
+    public async getAchievementsEarnedBetween(user: string, from: number, to: number): Promise<UserAchievement[]> {
+        const url = this._buildUrl('AchievementsEarnedBetween', { u: user, f: from, t: to });
         const result = await this._requestApi(url);
-        const object = new AchievementsEarnedBetween(result);
-        return object;
+        let array = [];
+        for (let i = 0; i < result.length; i++) {
+            array.push(new UserAchievement(result[i]))
+        }
+
+        return array;
+    }
+
+    /**
+     * Returns achievements earned by a user in one day
+     * @param user Achievement user
+     * @param day Day to filter (YYYY-MM-DD)
+     */
+    public async getAchievementsEarnedOnDay(user: string, day: string): Promise<UserAchievement[]> {
+        const url = this._buildUrl('AchievementsEarnedOnDay', { u: user, d: day });
+        const result = await this._requestApi(url);
+        let array = [];
+        for (let i = 0; i < result.length; i++) {
+            array.push(new UserAchievement(result[i]));
+        }
+
+        return array;
     }
 }

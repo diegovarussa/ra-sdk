@@ -1,7 +1,7 @@
 import { client } from "../src/config";
 import AchievementOfTheWeek from "../src/models/AchievementOfTheWeek";
 
-describe('Achievement distribution test', function () {
+describe('Achievement of the week test', function () {
 
     it('should have correct API result', async () => {
         const achievementOfTheWeek = await client.getAchievementOfTheWeek();

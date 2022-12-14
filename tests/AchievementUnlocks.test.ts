@@ -1,7 +1,7 @@
 import { achievementId, client } from "../src/config";
 import AchievementUnlocks from "../src/models/AchievementUnlocks";
 
-describe('Achievement distribution test', function () {
+describe('Achievement unlocks test', function () {
 
     it('should have correct API result', async () => {
         const achievementUnlocks = await client.getAchievementUnlocks(achievementId);

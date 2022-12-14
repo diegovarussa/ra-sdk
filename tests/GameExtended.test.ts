@@ -1,6 +1,6 @@
 import { client, gameId } from "../src/config";
 import GameExtended from "../src/models/GameExtended";
-import Achievement from "../src/models/Achievement";
+import GameAchievement from "../src/models/GameAchievement";
 import Claim from "../src/models/Claim";
 
 describe('Game extended test', function () {
@@ -30,7 +30,7 @@ describe('Game extended test', function () {
 
         if (gameExtended.achievements.length) {
             const achievement = gameExtended.achievements[0];
-            expect(achievement).toBeInstanceOf(Achievement);
+            expect(achievement).toBeInstanceOf(GameAchievement);
             expect(typeof achievement.id).toStrictEqual('number');
             expect(typeof achievement.numAwarded).toStrictEqual('number');
             expect(typeof achievement.numAwardedHardcore).toStrictEqual('number');

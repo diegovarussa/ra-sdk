@@ -17,7 +17,6 @@ export enum FLAG_FILTER {
  * value: number - Number of players who have earned that many achievement
  */
 type DistributionType = { 
-    /** bbb */
     [key: string]: number; 
 }
 
