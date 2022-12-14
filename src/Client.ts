@@ -2,6 +2,8 @@ import AchievementCount from "./models/AchievementCount";
 import AchievementDistribution, { FLAG_FILTER, TYPE_FILTER } from "./models/AchievementDistribution";
 import AchievementOfTheWeek from "./models/AchievementOfTheWeek";
 import AchievementUnlocks from "./models/AchievementUnlocks";
+import ActiveClaim from "./models/ActiveClaim";
+import Console from "./models/Console";
 import Game from "./models/Game";
 import GameExtended from "./models/GameExtended";
 import UserAchievement from "./models/UserAchievement";
@@ -144,6 +146,34 @@ export default class Client {
         let array = [];
         for (let i = 0; i < result.length; i++) {
             array.push(new UserAchievement(result[i]));
+        }
+
+        return array;
+    }
+
+    /**
+     * Returns information about all (1000 max) active set claims
+     */
+    public async getActiveClaims(): Promise<ActiveClaim[]> {
+        const url = this._buildUrl('ActiveClaims');
+        const result = await this._requestApi(url);
+        let array = [];
+        for (let i = 0; i < result.length; i++) {
+            array.push(new ActiveClaim(result[i]));
+        }
+
+        return array;
+    }
+
+    /**
+     * Returns mapping of known consoles
+     */
+    public async getGetConsoleIDs(): Promise<Console[]> {
+        const url = this._buildUrl('ConsoleIDs');
+        const result = await this._requestApi(url);
+        let array = [];
+        for (let i = 0; i < result.length; i++) {
+            array.push(new Console(result[i]));
         }
 
         return array;

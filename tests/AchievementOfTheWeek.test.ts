@@ -17,7 +17,7 @@ describe('Achievement of the week test', function () {
         expect(isNaN(achievementOfTheWeek.achievement.dateCreated.getDate())).toBeFalsy();
         expect(isNaN(achievementOfTheWeek.achievement.dateModified.getDate())).toBeFalsy();
         expect(typeof achievementOfTheWeek.console.id).toStrictEqual('number');
-        expect(typeof achievementOfTheWeek.console.title).toStrictEqual('string');
+        expect(typeof achievementOfTheWeek.console.name).toStrictEqual('string');
         expect(typeof achievementOfTheWeek.forumTopic.id).toStrictEqual('number');
         expect(typeof achievementOfTheWeek.game.id).toStrictEqual('number');
         expect(typeof achievementOfTheWeek.game.title).toStrictEqual('string');

@@ -1,3 +1,4 @@
+import Console from "./Console";
 import UnlockAchievement from "./UnlockAchievement";
 
 /**
@@ -7,7 +8,7 @@ export default class AchievementUnlocks {
     /** Information about the achievement */
     achievement: UnlockAchievement;
     /**Information about the console associated to the game associated to the achievement */
-    console: { id: number, title: string };
+    console: Console;
     /** Information about the game associated to the achievement */
     game: { id: number, title: string };
     /** Requested unlock information */
@@ -24,10 +25,8 @@ export default class AchievementUnlocks {
 
     constructor(json: any) {
         this.achievement = new UnlockAchievement(json.Achievement);
-        this.console = {
-            id: Number(json.Console.ID),
-            title: json.Console.Title,
-        };
+        json.Console.Name = json.Console.Title;
+        this.console = new Console(json.Console);
         this.game = {
             id: Number(json.Game.ID),
             title: json.Game.Title,

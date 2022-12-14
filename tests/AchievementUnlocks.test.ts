@@ -17,7 +17,7 @@ describe('Achievement unlocks test', function () {
         expect(isNaN(achievementUnlocks.achievement.dateCreated.getDate())).toBeFalsy();
         expect(isNaN(achievementUnlocks.achievement.dateModified.getDate())).toBeFalsy();
         expect(typeof achievementUnlocks.console.id).toStrictEqual('number');
-        expect(typeof achievementUnlocks.console.title).toStrictEqual('string');
+        expect(typeof achievementUnlocks.console.name).toStrictEqual('string');
         expect(typeof achievementUnlocks.game.id).toStrictEqual('number');
         expect(typeof achievementUnlocks.game.title).toStrictEqual('string');
         expect(typeof achievementUnlocks.totalPlayers).toStrictEqual('number');
