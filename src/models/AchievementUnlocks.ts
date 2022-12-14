@@ -1,11 +1,11 @@
-import Achievement from "./Achievement";
+import UnlockAchievement from "./UnlockAchievement";
 
 /**
  * Return the unlocks of the achievement
  */
 export default class AchievementUnlocks {
     /** Information about the achievement */
-    achievement: Achievement;
+    achievement: UnlockAchievement;
     /**Information about the console associated to the game associated to the achievement */
     console: { id: number, title: string };
     /** Information about the game associated to the achievement */
@@ -23,7 +23,7 @@ export default class AchievementUnlocks {
     unlocksCount: number;
 
     constructor(json: any) {
-        this.achievement = new Achievement(json.Achievement);
+        this.achievement = new UnlockAchievement(json.Achievement);
         this.console = {
             id: Number(json.Console.ID),
             title: json.Console.Title,

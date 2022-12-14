@@ -8,7 +8,7 @@ describe('Achievement earned on day test', function () {
         for (let i = 0; i < achievementsEarnedOnDay.length; i++) {
             const current = achievementsEarnedOnDay[i];
             expect(current).toBeInstanceOf(UserAchievement);
-            expect(typeof current.achievementId).toStrictEqual('number');
+            expect(typeof current.id).toStrictEqual('number');
             expect(typeof current.author).toStrictEqual('string');
             expect(typeof current.badgeName).toStrictEqual('number');
             expect(typeof current.badgeUrl).toStrictEqual('string');

@@ -1,6 +1,6 @@
-import Achievement from "./Achievement";
+import UnlockAchievement from "./UnlockAchievement";
 
-export default class GameAchievement extends Achievement {
+export default class GameAchievement extends UnlockAchievement {
     /** Number of times the achievement has been awarded */
     numAwarded: number;
     /** Number of times the achievement has been awarded in hardcore */

@@ -32,7 +32,7 @@ export default class Client {
                 url.searchParams.set(key, value);
             });
         }
-
+        // console.log(url.toString());
         return url.toString();
     }
 

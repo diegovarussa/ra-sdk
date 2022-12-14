@@ -1,11 +1,13 @@
 import { client } from "../src/config";
 import AchievementOfTheWeek from "../src/models/AchievementOfTheWeek";
+import UnlockAchievement from "../src/models/UnlockAchievement";
 
 describe('Achievement of the week test', function () {
 
     it('should have correct API result', async () => {
         const achievementOfTheWeek = await client.getAchievementOfTheWeek();
         expect(achievementOfTheWeek).toBeInstanceOf(AchievementOfTheWeek);
+        expect(achievementOfTheWeek.achievement).toBeInstanceOf(UnlockAchievement);
         expect(typeof achievementOfTheWeek.achievement.id).toStrictEqual('number');
         expect(typeof achievementOfTheWeek.achievement.title).toStrictEqual('string');
         expect(typeof achievementOfTheWeek.achievement.description).toStrictEqual('string');
