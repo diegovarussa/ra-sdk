@@ -10,8 +10,7 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "npx tsc",
-    "test": "jest",
-    "test:debug": "jest --runInBand"
+    "test": "jest --runInBand"
   },
   "keywords": [
     "RetroAchievements",

@@ -1,6 +1,7 @@
 import AchievementCount from "./models/AchievementCount";
 import AchievementDistribution, { FLAG_FILTER, TYPE_FILTER } from "./models/AchievementDistribution";
 import AchievementOfTheWeek from "./models/AchievementOfTheWeek";
+import AchievementsEarnedBetween from "./models/AchievementsEarnedBetween";
 import AchievementUnlocks from "./models/AchievementUnlocks";
 import Game from "./models/Game";
 import GameExtended from "./models/GameExtended";
@@ -111,6 +112,19 @@ export default class Client {
         const url = this._buildUrl('AchievementUnlocks', { a: id, o: offset, c: count });
         const result = await this._requestApi(url);
         const object = new AchievementUnlocks(result);
+        return object;
+    }
+
+    /**
+     * Return the unlocks of the achievement
+     * @param user Achievement user
+     * @param from Unix Timestamp to date to start query
+     * @param to Unix Timestamp to date to end query
+     */
+    public async getAchievementsEarnedBetween(user: string, from: number, to: number) {
+        const url = this._buildUrl('AchievementsEarnedBetween', {u: user, f: from, t: to });
+        const result = await this._requestApi(url);
+        const object = new AchievementsEarnedBetween(result);
         return object;
     }
 }
