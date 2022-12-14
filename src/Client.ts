@@ -1,5 +1,6 @@
 import AchievementCount from "./models/AchievementCount";
 import AchievementDistribution, { FLAG_FILTER, TYPE_FILTER } from "./models/AchievementDistribution";
+import AchievementOfTheWeek from "./models/AchievementOfTheWeek";
 import Game from "./models/Game";
 import GameExtended from "./models/GameExtended";
 
@@ -86,6 +87,16 @@ export default class Client {
         const url = this._buildUrl('AchievementDistribution', { i: id , h: type, f: flag});
         const result = await this._requestApi(url);
         const object = new AchievementDistribution(result);
+        return object;
+    }
+
+    /**
+     * Return the achievement of the week and people who unlocked it
+     */
+    public async getAchievementOfTheWeek() {
+        const url = this._buildUrl('AchievementOfTheWeek');
+        const result = await this._requestApi(url);
+        const object = new AchievementOfTheWeek(result);
         return object;
     }
 }
