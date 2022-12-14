@@ -21,7 +21,7 @@ describe('Game extended test', function () {
         expect(typeof gameExtended.publisher).toStrictEqual('string');
         expect(typeof gameExtended.developer).toStrictEqual('string');
         expect(typeof gameExtended.genre).toStrictEqual('string');
-        expect(gameExtended.released).toBeInstanceOf(Date);
+        expect(isNaN(gameExtended.released.getDate())).toBeFalsy();
         expect(typeof gameExtended.isFinal).toStrictEqual('boolean');
         expect(typeof gameExtended.numAchievements).toStrictEqual('number');
         expect(typeof gameExtended.numDistinctPlayersCasual).toStrictEqual('number');
@@ -39,8 +39,8 @@ describe('Game extended test', function () {
             expect(typeof achievement.points).toStrictEqual('number');
             expect(typeof achievement.trueRatio).toStrictEqual('number');
             expect(typeof achievement.author).toStrictEqual('string');
-            expect(achievement.dateCreated).toBeInstanceOf(Date);
-            expect(achievement.dateModified).toBeInstanceOf(Date);
+            expect(isNaN(achievement.dateCreated.getDate())).toBeFalsy();
+            expect(isNaN(achievement.dateModified.getDate())).toBeFalsy();
             expect(typeof achievement.badgeName).toStrictEqual('number');
             expect(typeof achievement.displayOrder).toStrictEqual('number');
             expect(typeof achievement.memAddr).toStrictEqual('string');
@@ -51,8 +51,8 @@ describe('Game extended test', function () {
             expect(claim).toBeInstanceOf(Claim);
             expect(typeof claim.user).toStrictEqual('string');
             expect(typeof claim.setType).toStrictEqual('number');
-            expect(claim.created).toBeInstanceOf(Date);
-            expect(claim.expiration).toBeInstanceOf(Date);
+            expect(isNaN(claim.created.getDate())).toBeFalsy();
+            expect(isNaN(claim.expiration.getDate())).toBeFalsy();
         }
     });
 });

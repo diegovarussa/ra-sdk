@@ -22,7 +22,7 @@ describe('Game extended test', function () {
         expect(typeof game.publisher).toStrictEqual('string');
         expect(typeof game.developer).toStrictEqual('string');
         expect(typeof game.genre).toStrictEqual('string');
-        expect(game.released).toBeInstanceOf(Date);
+        expect(isNaN(game.released.getDate())).toBeFalsy();
     });
 
 });

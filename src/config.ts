@@ -8,10 +8,13 @@ const userName = process.env.USER_NAME as string;
 const webApiKey = process.env.WEB_API_KEY as string;
 /** RetroAchievements game ID */
 const gameId = Number(process.env.GAME_ID as string);
+/** RetroAchievements Achievement ID */
+const achievementId = Number(process.env.ACHIEVEMENT_ID as string);
 /** Client instance */
 const client = new Client(userName, webApiKey);
 
 export {
     gameId,
+    achievementId,
     client,
 }
