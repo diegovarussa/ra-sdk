@@ -44,6 +44,8 @@ describe('Game extended test', function () {
             expect(typeof achievement.badgeName).toStrictEqual('number');
             expect(typeof achievement.displayOrder).toStrictEqual('number');
             expect(typeof achievement.memAddr).toStrictEqual('string');
+            expect(achievement.dateEarned).toStrictEqual(null);
+            expect(achievement.dateEarnedHardcore).toStrictEqual(null);
         }
 
         if (gameExtended.claims.length) {

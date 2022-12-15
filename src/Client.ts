@@ -6,6 +6,7 @@ import ActiveClaim from "./models/ActiveClaim";
 import Console from "./models/Console";
 import Game from "./models/Game";
 import GameExtended from "./models/GameExtended";
+import GameUserProgress from "./models/GameUserProgress";
 import UserAchievement from "./models/UserAchievement";
 
 export default class Client {
@@ -34,7 +35,7 @@ export default class Client {
                 url.searchParams.set(key, value);
             });
         }
-        // console.log(url.toString());
+
         return url.toString();
     }
 
@@ -150,32 +151,44 @@ export default class Client {
 
         return array;
     }
-
+    
     /**
      * Returns information about all (1000 max) active set claims
-     */
-    public async getActiveClaims(): Promise<ActiveClaim[]> {
-        const url = this._buildUrl('ActiveClaims');
-        const result = await this._requestApi(url);
-        let array = [];
+    */
+   public async getActiveClaims(): Promise<ActiveClaim[]> {
+       const url = this._buildUrl('ActiveClaims');
+       const result = await this._requestApi(url);
+       let array = [];
         for (let i = 0; i < result.length; i++) {
             array.push(new ActiveClaim(result[i]));
         }
-
+        
+        return array;
+    }
+    
+    /**
+     * Returns mapping of known consoles
+    */
+   public async getGetConsoleIDs(): Promise<Console[]> {
+       const url = this._buildUrl('ConsoleIDs');
+       const result = await this._requestApi(url);
+       let array = [];
+       for (let i = 0; i < result.length; i++) {
+           array.push(new Console(result[i]));
+        }
+        
         return array;
     }
 
     /**
-     * Returns mapping of known consoles
+     * Return game and user progress on achievements
+     * @param id Game ID
+     * @param username Username
      */
-    public async getGetConsoleIDs(): Promise<Console[]> {
-        const url = this._buildUrl('ConsoleIDs');
+    public async getGameUserProgress(id: number, username: string) {
+        const url = this._buildUrl('GameInfoAndUserProgress', { g: id, u: username });
         const result = await this._requestApi(url);
-        let array = [];
-        for (let i = 0; i < result.length; i++) {
-            array.push(new Console(result[i]));
-        }
-
-        return array;
+        const object = new GameUserProgress(result);
+        return object;
     }
 }

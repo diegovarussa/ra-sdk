@@ -28,7 +28,7 @@ export default class GameExtended extends Game {
         for (let i = 0; i < json.Claims.length; i++) {
             this.claims.push(new Claim(json.Claims[i]));
         }
-        Object.entries(json.Achievements).forEach(([key, value]) => {
+        Object.entries(json.Achievements).forEach(([_key, value]) => {
             this.achievements.push(new Achievement(value))
         });
     }

@@ -11,6 +11,10 @@ export default class GameAchievement extends UnlockAchievement {
     displayOrder: number;
     /** MD5 of the logic for the achievement */
     memAddr: string;
+    /** When the achievement was earned by the user */
+    dateEarned: Date | null;
+    /** When the achievement was earned by the user in hardcore */
+    dateEarnedHardcore: Date | null;
 
     constructor(json: any) {
         super(json);
@@ -19,5 +23,7 @@ export default class GameAchievement extends UnlockAchievement {
         this.badgeName = Number(json.BadgeName);
         this.displayOrder = Number(json.DisplayOrder);
         this.memAddr = json.MemAddr;
+        this.dateEarned = (json.DateEarned) ? new Date(json.DateEarned) : null;
+        this.dateEarnedHardcore = (json.DateEarned) ? new Date(json.DateEarned) : null;
     }
 };
