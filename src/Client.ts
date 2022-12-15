@@ -6,6 +6,7 @@ import ActiveClaim from "./models/ActiveClaim";
 import Console from "./models/Console";
 import Game from "./models/Game";
 import GameExtended from "./models/GameExtended";
+import GameListItem from "./models/GameListItem";
 import GameUserProgress from "./models/GameUserProgress";
 import UserAchievement from "./models/UserAchievement";
 
@@ -151,32 +152,32 @@ export default class Client {
 
         return array;
     }
-    
+
     /**
      * Returns information about all (1000 max) active set claims
     */
-   public async getActiveClaims(): Promise<ActiveClaim[]> {
-       const url = this._buildUrl('ActiveClaims');
-       const result = await this._requestApi(url);
-       let array = [];
+    public async getActiveClaims(): Promise<ActiveClaim[]> {
+        const url = this._buildUrl('ActiveClaims');
+        const result = await this._requestApi(url);
+        let array = [];
         for (let i = 0; i < result.length; i++) {
             array.push(new ActiveClaim(result[i]));
         }
-        
+
         return array;
     }
-    
+
     /**
      * Returns mapping of known consoles
     */
-   public async getGetConsoleIDs(): Promise<Console[]> {
-       const url = this._buildUrl('ConsoleIDs');
-       const result = await this._requestApi(url);
-       let array = [];
-       for (let i = 0; i < result.length; i++) {
-           array.push(new Console(result[i]));
+    public async getGetConsoleIDs(): Promise<Console[]> {
+        const url = this._buildUrl('ConsoleIDs');
+        const result = await this._requestApi(url);
+        let array = [];
+        for (let i = 0; i < result.length; i++) {
+            array.push(new Console(result[i]));
         }
-        
+
         return array;
     }
 
@@ -190,5 +191,22 @@ export default class Client {
         const result = await this._requestApi(url);
         const object = new GameUserProgress(result);
         return object;
+    }
+
+    /**
+     * Return an array of GameListItem object
+     * @param id Console ID
+     * @param onlyWithAchievements 1=only return games where NumAchievements > 0 (default: 0)
+     * @param addHashes 1=also return hashes (default: 0)
+     */
+    public async getGameList(id: number, onlyWithAchievements: number = 0, addHashes: number = 0): Promise<GameListItem[]> {
+        const url = this._buildUrl('GameList', { i: id, f: onlyWithAchievements, h: addHashes });
+        const result = await this._requestApi(url);
+        let array = [];
+        for (let i = 0; i < result.length; i++) {
+            array.push(new GameListItem(result[i]));
+        }
+
+        return array;
     }
 }

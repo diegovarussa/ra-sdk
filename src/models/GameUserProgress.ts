@@ -1,7 +1,5 @@
-import Achievement from "./Achievement";
 import Game from "./Game";
 import GameAchievement from "./GameAchievement";
-import UserAchievement from "./UserAchievement";
 
 /**
  * Return game and user progress on achievements
