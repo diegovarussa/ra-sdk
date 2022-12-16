@@ -7,6 +7,7 @@ import Console from "./models/Console";
 import Game from "./models/Game";
 import GameExtended from "./models/GameExtended";
 import GameListItem from "./models/GameListItem";
+import GameRankScoreItem from "./models/GameRankScoreItem";
 import GameUserProgress from "./models/GameUserProgress";
 import UserAchievement from "./models/UserAchievement";
 
@@ -194,7 +195,7 @@ export default class Client {
     }
 
     /**
-     * Return an array of GameListItem object
+     * Return an array of GameListItem objects
      * @param id Console ID
      * @param onlyWithAchievements 1=only return games where NumAchievements > 0 (default: 0)
      * @param addHashes 1=also return hashes (default: 0)
@@ -205,6 +206,22 @@ export default class Client {
         let array = [];
         for (let i = 0; i < result.length; i++) {
             array.push(new GameListItem(result[i]));
+        }
+
+        return array;
+    }
+
+    /**
+     * Return an array of GameRankScoreItem objects
+     * @param id Game ID
+     * @param type 1=Latest Masters, 0=High Scores (default: 0)
+     */
+    public async getGameRankScore(id: number, type: number = 0): Promise<GameRankScoreItem[]> {
+        const url = this._buildUrl('GameRankAndScore', { g: id, t: type });
+        const result = await this._requestApi(url);
+        let array = [];
+        for (let i = 0; i < result.length; i++) {
+            array.push(new GameRankScoreItem(result[i]));
         }
 
         return array;
