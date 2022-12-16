@@ -8,6 +8,7 @@ import Game from "./models/Game";
 import GameExtended from "./models/GameExtended";
 import GameListItem from "./models/GameListItem";
 import GameRankScoreItem from "./models/GameRankScoreItem";
+import GameRating from "./models/GameRating";
 import GameUserProgress from "./models/GameUserProgress";
 import UserAchievement from "./models/UserAchievement";
 
@@ -225,5 +226,16 @@ export default class Client {
         }
 
         return array;
+    }
+
+    /**
+     * Gets the overall rating of the game
+     * @param id Game ID
+     */
+    public async getGameRating(id: number) {
+        const url = this._buildUrl('GameRating', { i: id });
+        const result = await this._requestApi(url);
+        const object = new GameRating(result);
+        return object;
     }
 }
