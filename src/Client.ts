@@ -171,8 +171,23 @@ export default class Client {
     }
 
     /**
+     * Returns information about all claims form the user
+     */
+    public async getUserClaims(): Promise<ActiveClaim[]> {
+        const url = this._buildUrl('UserClaims');
+        const result = await this._requestApi(url);
+        let array = [];
+        for (let i = 0; i < result.length; i++) {
+            array.push(new ActiveClaim(result[i]));
+        }
+
+        return array;
+    }
+
+
+    /**
      * Returns mapping of known consoles
-    */
+     */
     public async getGetConsoleIDs(): Promise<Console[]> {
         const url = this._buildUrl('ConsoleIDs');
         const result = await this._requestApi(url);
