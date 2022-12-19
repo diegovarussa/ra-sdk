@@ -11,6 +11,7 @@ import GameRankScoreItem from "./models/GameRankScoreItem";
 import GameRating from "./models/GameRating";
 import GameUserProgress from "./models/GameUserProgress";
 import UserAchievement from "./models/UserAchievement";
+import UserTopTen from "./models/UserTopTen";
 
 export default class Client {
     private _base_url = 'https://retroachievements.org';
@@ -231,11 +232,25 @@ export default class Client {
     /**
      * Gets the overall rating of the game
      * @param id Game ID
-     */
+    */
     public async getGameRating(id: number) {
         const url = this._buildUrl('GameRating', { i: id });
         const result = await this._requestApi(url);
         const object = new GameRating(result);
         return object;
+    }
+
+    /**
+     * Gets information about the top ten users (by score) for the site
+     */
+    public async getTopTenUsers(): Promise<UserTopTen[]> {
+        const url = this._buildUrl('TopTenUsers');
+        const result = await this._requestApi(url);
+        let array = [];
+        for (let i = 0; i < result.length; i++) {
+            array.push(new UserTopTen(result[i]));
+        }
+
+        return array;
     }
 }
