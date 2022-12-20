@@ -12,6 +12,8 @@ import GameRankScoreItem from "./models/GameRankScoreItem";
 import GameRating from "./models/GameRating";
 import GameUserProgress from "./models/GameUserProgress";
 import UserAchievement from "./models/UserAchievement";
+import UserProgress from "./models/UserProgress";
+import UserRankAndScore from "./models/UserRankAndScore";
 import UserTopTen from "./models/UserTopTen";
 
 export default class Client {
@@ -286,13 +288,12 @@ export default class Client {
         return array;
     }
 
-
     /**
      * Gets user's High Scores entry for a game
      * @param id Game ID
      * @param username Username
      */
-    public async getUserGameRankAndScore(id: number, username: string): Promise<GameRankScoreItem[]>  {
+    public async getUserGameRankAndScore(id: number, username: string): Promise<GameRankScoreItem[]> {
         const url = this._buildUrl('UserGameRankAndScore', { g: id, u: username });
         const result = await this._requestApi(url);
         let array = [];
@@ -301,6 +302,33 @@ export default class Client {
         }
 
         return array;
+    }
+
+    /**
+     * Gets user's achievement progress for a game list
+     * @param ids Game IDs
+     * @param username Username
+     */
+    public async getUserProgress(ids: number[], username: string): Promise<UserProgress[]> {
+        const url = this._buildUrl('UserProgress', { i: ids.join(','), u: username });
+        const result = await this._requestApi(url);
+        let array: UserProgress[] = [];
+        Object.entries(result).forEach(([key, value]) => {
+            array.push(new UserProgress(Number(key), value));
+        });
+
+        return array;
+    }
+
+    /**
+     * Gets user's achievement progress for a game list
+     * @param username Username
+     */
+    public async getUserRankAndScore(username: string) {
+        const url = this._buildUrl('UserRankAndScore', { u: username });
+        const result = await this._requestApi(url);
+        const object = new UserRankAndScore(result);
+        return object;
     }
 
 }
