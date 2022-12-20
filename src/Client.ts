@@ -15,6 +15,7 @@ import GameUserProgress from "./models/GameUserProgress";
 import UserAchievement from "./models/UserAchievement";
 import UserProgress from "./models/UserProgress";
 import UserRankAndScore from "./models/UserRankAndScore";
+import UserSummary from "./models/UserSummary";
 import UserTopTen from "./models/UserTopTen";
 
 export default class Client {
@@ -338,7 +339,7 @@ export default class Client {
      * @param offset Number of entries to skip (default: 0)
      * @param count Number of entries to return (default: 10, max: 50)
      */
-    public async getUserRecentlyPlayedGames(username: string, offset: number = 0, count: number = 10): Promise<GameRecent[]>  {
+    public async getUserRecentlyPlayedGames(username: string, offset: number = 0, count: number = 10): Promise<GameRecent[]> {
         const url = this._buildUrl('UserRecentlyPlayedGames', { u: username, o: offset, c: count });
         const result = await this._requestApi(url);
         let array = [];
@@ -349,4 +350,16 @@ export default class Client {
         return array;
     }
 
+    /**
+     * Return the player summary
+     * @param username Username
+     * @param gameLimit Number of recent games to return (default: 5)
+     * @param achievementLimit Number of recent achievements to return (default: 10)
+     */
+    public async getUserSummary(username: string, gameLimit: number = 5, achievementLimit: number = 10) {
+        const url = this._buildUrl('UserSummary', { u: username, g: gameLimit, a: achievementLimit });
+        const result = await this._requestApi(url);
+        const object = new UserSummary(result);
+        return object;
+    }
 }

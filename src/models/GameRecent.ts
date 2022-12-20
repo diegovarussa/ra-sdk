@@ -14,7 +14,7 @@ export default class GameRecent {
     /** Number of core achievements associated to the game */
     imageIcon: string;
     /** when the user last played the game */
-    LastPlayed: Date;
+    lastPlayed: Date;
     /** User's rating of the game (1-5) */
     MyVote: number;
     /** Number of achievements earned by the user in softcore */
@@ -34,7 +34,7 @@ export default class GameRecent {
         this.imageIcon = json.ImageIcon;
         this.NumPossibleAchievements = Number(json.NumPossibleAchievements);
         this.PossibleScore = Number(json.PossibleScore);
-        this.LastPlayed = new Date(json.LastPlayed);
+        this.lastPlayed = new Date(json.LastPlayed);
         this.MyVote = Number(json.MyVote);
         this.NumAchieved = Number(json.NumAchieved);
         this.ScoreAchieved = Number(json.ScoreAchieved);

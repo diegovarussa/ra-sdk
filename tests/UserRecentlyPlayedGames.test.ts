@@ -15,7 +15,7 @@ describe('User recently played games test', function () {
             expect(typeof game.consoleID).toStrictEqual('number');
             expect(typeof game.consoleName).toStrictEqual('string');
             expect(typeof game.imageIcon).toStrictEqual('string');
-            expect(isNaN(game.LastPlayed.getDate())).toBeFalsy();
+            expect(isNaN(game.lastPlayed.getDate())).toBeFalsy();
             // expect(typeof game.MyVote).toStrictEqual('number');
             expect(typeof game.NumAchieved).toStrictEqual('number');
             expect(typeof game.ScoreAchieved).toStrictEqual('number');

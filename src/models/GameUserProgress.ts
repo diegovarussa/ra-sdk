@@ -32,9 +32,11 @@ export default class GameUserProgress extends Game {
         this.numDistinctPlayersCasual = Number(json.NumDistinctPlayersCasual);
         this.numDistinctPlayersHardcore = Number(json.NumDistinctPlayersHardcore);
         this.richPresencePatch = json.RichPresencePatch;
-        Object.entries(json.Achievements).forEach(([_key, value]) => {
-            this.achievements.push(new GameAchievement(value))
-        });
+        if (json.Achievements) {
+            Object.entries(json.Achievements).forEach(([_key, value]) => {
+                this.achievements.push(new GameAchievement(value))
+            });
+        }
         this.numAwardedToUser = Number(json.NumAwardedToUser);
         this.numAwardedToUserHardcore = Number(json.NumAwardedToUserHardcore);
         this.userCompletion = json.UserCompletion;
