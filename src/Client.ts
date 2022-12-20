@@ -5,6 +5,7 @@ import AchievementUnlocks from "./models/AchievementUnlocks";
 import ActiveClaim from "./models/ActiveClaim";
 import Console from "./models/Console";
 import Game from "./models/Game";
+import GameCompleted from "./models/GameCompleted";
 import GameExtended from "./models/GameExtended";
 import GameListItem from "./models/GameListItem";
 import GameRankScoreItem from "./models/GameRankScoreItem";
@@ -158,7 +159,7 @@ export default class Client {
 
     /**
      * Returns information about all (1000 max) active set claims
-    */
+     */
     public async getActiveClaims(): Promise<ActiveClaim[]> {
         const url = this._buildUrl('ActiveClaims');
         const result = await this._requestApi(url);
@@ -247,7 +248,7 @@ export default class Client {
     /**
      * Gets the overall rating of the game
      * @param id Game ID
-    */
+     */
     public async getGameRating(id: number) {
         const url = this._buildUrl('GameRating', { i: id });
         const result = await this._requestApi(url);
@@ -264,6 +265,22 @@ export default class Client {
         let array = [];
         for (let i = 0; i < result.length; i++) {
             array.push(new UserTopTen(result[i]));
+        }
+
+        return array;
+    }
+
+    /**
+     * Gets all game progress for a user
+     * NOTE: each game may appear in the list twice - once for Hardcore and once for Casual
+     * @param username Username
+     */
+    public async getUserCompletedGames(username: string): Promise<GameCompleted[]> {
+        const url = this._buildUrl('UserCompletedGames', { u: username });
+        const result = await this._requestApi(url);
+        let array = [];
+        for (let i = 0; i < result.length; i++) {
+            array.push(new GameCompleted(result[i]));
         }
 
         return array;
