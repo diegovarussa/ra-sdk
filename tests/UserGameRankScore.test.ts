@@ -1,10 +1,10 @@
-import { client, gameId } from "../src/config";
+import { client, gameId, userName } from "../src/config";
 import GameRankScoreItem from "../src/models/GameRankScoreItem";
 
-describe('Game rank and score test', function () {
+describe('User game rank and score test', function () {
 
     it('should have correct API result', async () => {
-        const rankScoreList = await client.getGameRankScore(gameId,1);
+        const rankScoreList = await client.getUserGameRankAndScore(gameId, userName);
         for (let i = 0; i < rankScoreList.length; i++) {
             const current = rankScoreList[i];
             expect(current).toBeInstanceOf(GameRankScoreItem);

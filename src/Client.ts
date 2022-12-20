@@ -285,4 +285,22 @@ export default class Client {
 
         return array;
     }
+
+
+    /**
+     * Gets user's High Scores entry for a game
+     * @param id Game ID
+     * @param username Username
+     */
+    public async getUserGameRankAndScore(id: number, username: string): Promise<GameRankScoreItem[]>  {
+        const url = this._buildUrl('UserGameRankAndScore', { g: id, u: username });
+        const result = await this._requestApi(url);
+        let array = [];
+        for (let i = 0; i < result.length; i++) {
+            array.push(new GameRankScoreItem(result[i]));
+        }
+
+        return array;
+    }
+
 }

@@ -15,6 +15,6 @@ export default class GameRankScoreItem {
         this.user = json.User;
         this.totalScore = Number(json.TotalScore);
         this.lastAward = new Date(json.LastAward);
-        this.rank = Number(json.Rank);
+        this.rank = (json.Rank) ? Number(json.Rank) : Number(json.UserRank);
     }
 }
