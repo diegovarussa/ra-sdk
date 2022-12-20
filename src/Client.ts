@@ -10,6 +10,7 @@ import GameExtended from "./models/GameExtended";
 import GameListItem from "./models/GameListItem";
 import GameRankScoreItem from "./models/GameRankScoreItem";
 import GameRating from "./models/GameRating";
+import GameRecent from "./models/GameRecent";
 import GameUserProgress from "./models/GameUserProgress";
 import UserAchievement from "./models/UserAchievement";
 import UserProgress from "./models/UserProgress";
@@ -329,6 +330,23 @@ export default class Client {
         const result = await this._requestApi(url);
         const object = new UserRankAndScore(result);
         return object;
+    }
+
+    /**
+     * Return the player recently played games
+     * @param username Username
+     * @param offset Number of entries to skip (default: 0)
+     * @param count Number of entries to return (default: 10, max: 50)
+     */
+    public async getUserRecentlyPlayedGames(username: string, offset: number = 0, count: number = 10): Promise<GameRecent[]>  {
+        const url = this._buildUrl('UserRecentlyPlayedGames', { u: username, o: offset, c: count });
+        const result = await this._requestApi(url);
+        let array = [];
+        for (let i = 0; i < result.length; i++) {
+            array.push(new GameRecent(result[i]));
+        }
+
+        return array;
     }
 
 }
