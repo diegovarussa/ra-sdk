@@ -190,7 +190,6 @@ export default class Client {
         return array;
     }
 
-
     /**
      * Returns mapping of known consoles
      */
@@ -208,10 +207,11 @@ export default class Client {
     /**
      * Return game and user progress on achievements
      * @param id Game ID
-     * @param username Username
+     * @param username Username (default: current api key user)
      */
     public async getGameUserProgress(id: number, username: string) {
-        const url = this._buildUrl('GameInfoAndUserProgress', { g: id, u: username });
+        const user = username || this._userName;
+        const url = this._buildUrl('GameInfoAndUserProgress', { g: id, u: user });
         const result = await this._requestApi(url);
         const object = new GameUserProgress(result);
         return object;
@@ -278,10 +278,11 @@ export default class Client {
     /**
      * Gets all game progress for a user
      * NOTE: each game may appear in the list twice - once for Hardcore and once for Casual
-     * @param username Username
+     * @param username Username (default: current api key user)
      */
     public async getUserCompletedGames(username: string): Promise<GameCompleted[]> {
-        const url = this._buildUrl('UserCompletedGames', { u: username });
+        const user = username || this._userName;
+        const url = this._buildUrl('UserCompletedGames', { u: user });
         const result = await this._requestApi(url);
         let array = [];
         for (let i = 0; i < result.length; i++) {
@@ -294,10 +295,11 @@ export default class Client {
     /**
      * Gets user's High Scores entry for a game
      * @param id Game ID
-     * @param username Username
+     * @param username Username (default: current api key user)
      */
     public async getUserGameRankAndScore(id: number, username: string): Promise<GameRankScoreItem[]> {
-        const url = this._buildUrl('UserGameRankAndScore', { g: id, u: username });
+        const user = username || this._userName;
+        const url = this._buildUrl('UserGameRankAndScore', { g: id, u: user });
         const result = await this._requestApi(url);
         let array = [];
         for (let i = 0; i < result.length; i++) {
@@ -310,10 +312,11 @@ export default class Client {
     /**
      * Gets user's achievement progress for a game list
      * @param ids Game IDs
-     * @param username Username
+     * @param username Username (default: current api key user)
      */
     public async getUserProgress(ids: number[], username: string): Promise<UserProgress[]> {
-        const url = this._buildUrl('UserProgress', { i: ids.join(','), u: username });
+        const user = username || this._userName;
+        const url = this._buildUrl('UserProgress', { i: ids.join(','), u: user });
         const result = await this._requestApi(url);
         let array: UserProgress[] = [];
         Object.entries(result).forEach(([key, value]) => {
@@ -325,10 +328,11 @@ export default class Client {
 
     /**
      * Gets user's achievement progress for a game list
-     * @param username Username
+     * @param username Username (default: current api key user)
      */
     public async getUserRankAndScore(username: string) {
-        const url = this._buildUrl('UserRankAndScore', { u: username });
+        const user = username || this._userName;
+        const url = this._buildUrl('UserRankAndScore', { u: user });
         const result = await this._requestApi(url);
         const object = new UserRankAndScore(result);
         return object;
@@ -336,12 +340,13 @@ export default class Client {
 
     /**
      * Return the player recently played games
-     * @param username Username
+     * @param username Username (default: current api key user)
      * @param offset Number of entries to skip (default: 0)
      * @param count Number of entries to return (default: 10, max: 50)
      */
     public async getUserRecentlyPlayedGames(username: string, offset: number = 0, count: number = 10): Promise<GameRecent[]> {
-        const url = this._buildUrl('UserRecentlyPlayedGames', { u: username, o: offset, c: count });
+        const user = username || this._userName;
+        const url = this._buildUrl('UserRecentlyPlayedGames', { u: user, o: offset, c: count });
         const result = await this._requestApi(url);
         let array = [];
         for (let i = 0; i < result.length; i++) {
@@ -353,7 +358,7 @@ export default class Client {
 
     /**
      * Return the player summary
-     * @param username Username (default: current logged user)
+     * @param username Username (default: current api key user)
      * @param gameLimit Number of recent games to return (default: 5)
      * @param achievementLimit Number of recent achievements to return (default: 10)
      */
