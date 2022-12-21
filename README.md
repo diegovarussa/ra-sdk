@@ -18,7 +18,7 @@ game.forumTopicId;
 ```
 
 ## Parse comments from achievement and game
-Extract data form comments to provide user tips about how to complete that achievement.
+Extract data from comments to provide user tips about how to complete that achievement.
 
 ## Extra Field
 Added extra fields that the API does not provide and are useful information to use.
