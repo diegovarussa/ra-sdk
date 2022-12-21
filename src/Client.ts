@@ -18,9 +18,11 @@ import UserProgress from "./models/UserProgress";
 import UserRankAndScore from "./models/UserRankAndScore";
 import UserSummary from "./models/UserSummary";
 import UserTopTen from "./models/UserTopTen";
+import { isBrowser } from "browser-or-node";
 
 export default class Client {
     private _base_url = 'https://retroachievements.org';
+    private _cors_proxy = 'https://corsproxy.io/?';
     private _pathname_prefix = 'API/API_Get';
     private _pathname_suffix = '.php';
     private _userName: string;
@@ -30,6 +32,7 @@ export default class Client {
     public constructor(userName: string, webApiKey: string) {
         this._userName = userName;
         this._webApiKey = webApiKey;
+        this._cors_proxy = (isBrowser) ? this._cors_proxy : '';
     }
 
     /**
@@ -375,7 +378,7 @@ export default class Client {
      * @param id Achievement ID
      */
     public async getAchievementComments(id: number) {
-        const result = await fetch(`${this._base_url}/achievement/${id}`);
+        const result = await fetch(`${this._cors_proxy}${this._base_url}/achievement/${id}`);
         const html = await result.text();
         return HtmlParser.parsePageComments(html);
     }
@@ -385,7 +388,7 @@ export default class Client {
      * @param id Game ID
      */
     public async getGameComments(id: number) {
-        const result = await fetch(`${this._base_url}/game/${id}`);
+        const result = await fetch(`${this._cors_proxy}${this._base_url}/game/${id}`);
         const html = await result.text();
         return HtmlParser.parsePageComments(html);
     }
