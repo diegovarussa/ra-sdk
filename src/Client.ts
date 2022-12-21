@@ -1,3 +1,4 @@
+import HtmlParser from "./HtmlParser";
 import AchievementCount from "./models/AchievementCount";
 import AchievementDistribution, { FLAG_FILTER, TYPE_FILTER } from "./models/AchievementDistribution";
 import AchievementOfTheWeek from "./models/AchievementOfTheWeek";
@@ -361,5 +362,25 @@ export default class Client {
         const result = await this._requestApi(url);
         const object = new UserSummary(result);
         return object;
+    }
+
+    /**
+     * Return all comments for the achievement
+     * @param id Achievement ID
+     */
+    public async getAchievementComments(id: number) {
+        const result = await fetch(`${this._base_url}/achievement/${id}`);
+        const html = await result.text();
+        return HtmlParser.parsePageComments(html);
+    }
+
+    /**
+     * Return all comments for the game
+     * @param id Game ID
+     */
+    public async getGameComments(id: number) {
+        const result = await fetch(`${this._base_url}/game/${id}`);
+        const html = await result.text();
+        return HtmlParser.parsePageComments(html);
     }
 }
