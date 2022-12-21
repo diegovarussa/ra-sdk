@@ -353,12 +353,13 @@ export default class Client {
 
     /**
      * Return the player summary
-     * @param username Username
+     * @param username Username (default: current logged user)
      * @param gameLimit Number of recent games to return (default: 5)
      * @param achievementLimit Number of recent achievements to return (default: 10)
      */
-    public async getUserSummary(username: string, gameLimit: number = 5, achievementLimit: number = 10) {
-        const url = this._buildUrl('UserSummary', { u: username, g: gameLimit, a: achievementLimit });
+    public async getUserSummary(username?: string, gameLimit: number = 5, achievementLimit: number = 10) {
+        const user = username || this._userName;
+        const url = this._buildUrl('UserSummary', { u: user, g: gameLimit, a: achievementLimit });
         const result = await this._requestApi(url);
         const object = new UserSummary(result);
         return object;
