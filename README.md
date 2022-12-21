@@ -17,7 +17,7 @@ game.forumTopicId;
 // Unique identifier of the official forum topic for the game
 ```
 
-## Parse comments from achievement (TODO)
+## Parse comments from achievement and game
 Extract data form comments to provide user tips about how to complete that achievement.
 
 ## Extra Field
@@ -34,6 +34,7 @@ New filed `isMissable` (`boolean`):
 - [Examples](#examples)
   - [Initializing the client](#initializing-the-client)
   - [Top ten users by points](#top-ten-users-by-points)
+  - [CORS for browser](#top-ten-users-by-points)
 
 
 ## Getting started
@@ -53,7 +54,7 @@ To initialize the client, you will need your username and your RetroAchievements
 You can initialize the client like so:
 
 ```typescript
-import Client from 'ra-sdk';
+import { Client } from "ra-sdk";
 const client = new Client('youUserName', 'yourWebApiKey');
 ```
 
@@ -62,4 +63,12 @@ const client = new Client('youUserName', 'yourWebApiKey');
 ```typescript
 const topTen = await client.getTopTenUsers();
 console.log(topTen);
+```
+
+### CORS for browser
+
+To web scrape achievement and game comments a cors proxy is needed for browsers, we are using https://corsproxy.io/ but you can provide yours in the client constructor if you need this feature: 
+```typescript
+import { Client } from "ra-sdk";
+const client = new Client('youUserName', 'yourWebApiKey', 'https://proxy.cors.sh/');
 ```

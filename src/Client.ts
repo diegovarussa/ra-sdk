@@ -21,25 +21,25 @@ import UserTopTen from "./models/UserTopTen";
 import { isBrowser } from "browser-or-node";
 
 export default class Client {
-    private _base_url = 'https://retroachievements.org';
-    private _cors_proxy = 'https://corsproxy.io/?';
-    private _pathname_prefix = 'API/API_Get';
-    private _pathname_suffix = '.php';
+    private _baseUrl = 'https://retroachievements.org';
+    private _pathnamePrefix = 'API/API_Get';
+    private _pathnameSuffix = '.php';
     private _userName: string;
     private _webApiKey: string;
+    private _corsProxy: string;
     public BASE_MEDIA_URL = 'https://media.retroachievements.org';
 
-    public constructor(userName: string, webApiKey: string) {
+    public constructor(userName: string, webApiKey: string, corsProxy: string = 'https://corsproxy.io/?') {
         this._userName = userName;
         this._webApiKey = webApiKey;
-        this._cors_proxy = (isBrowser) ? this._cors_proxy : '';
+        this._corsProxy = (isBrowser) ? corsProxy : '';
     }
 
     /**
      * Create URL dynamically based on parameters
      */
     private _buildUrl(pathname: string, searchParams?: object) {
-        const url = new URL(`${this._pathname_prefix}${pathname}${this._pathname_suffix}`, this._base_url);
+        const url = new URL(`${this._pathnamePrefix}${pathname}${this._pathnameSuffix}`, this._baseUrl);
         url.searchParams.set('z', this._userName);
         url.searchParams.set('y', this._webApiKey);
 
@@ -378,7 +378,7 @@ export default class Client {
      * @param id Achievement ID
      */
     public async getAchievementComments(id: number) {
-        const result = await fetch(`${this._cors_proxy}${this._base_url}/achievement/${id}`);
+        const result = await fetch(`${this._corsProxy}${this._baseUrl}/achievement/${id}`);
         const html = await result.text();
         return HtmlParser.parsePageComments(html);
     }
@@ -388,7 +388,7 @@ export default class Client {
      * @param id Game ID
      */
     public async getGameComments(id: number) {
-        const result = await fetch(`${this._cors_proxy}${this._base_url}/game/${id}`);
+        const result = await fetch(`${this._corsProxy}${this._baseUrl}/game/${id}`);
         const html = await result.text();
         return HtmlParser.parsePageComments(html);
     }
