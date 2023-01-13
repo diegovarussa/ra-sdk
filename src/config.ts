@@ -25,6 +25,7 @@ const client = new Client(userName, webApiKey);
 
 export {
     userName,
+    webApiKey,
     gameId,
     consoleId,
     achievementId,

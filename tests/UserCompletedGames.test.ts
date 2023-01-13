@@ -1,10 +1,10 @@
-import { client, userName } from "../src/config";
+import { client } from "../src/config";
 import GameCompleted from "../src/models/GameCompleted";
 
 describe('User completed games test', function () {
 
     it('should have correct API result', async () => {
-        const games = await client.getUserCompletedGames(userName);
+        const games = await client.getUserCompletedGames();
         for (let i = 0; i < games.length; i++) {
             const game = games[i];
             expect(game).toBeInstanceOf(GameCompleted);

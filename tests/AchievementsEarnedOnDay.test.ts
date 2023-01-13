@@ -1,10 +1,10 @@
-import { client, dayFilter, userName } from "../src/config";
+import { client, dayFilter } from "../src/config";
 import UserAchievement from "../src/models/UserAchievement";
 
 describe('Achievement earned on day test', function () {
 
     it('should have correct API result', async () => {
-        const achievementsEarnedOnDay = await client.getAchievementsEarnedOnDay(userName, dayFilter);
+        const achievementsEarnedOnDay = await client.getAchievementsEarnedOnDay(dayFilter);
         for (let i = 0; i < achievementsEarnedOnDay.length; i++) {
             const current = achievementsEarnedOnDay[i];
             expect(current).toBeInstanceOf(UserAchievement);

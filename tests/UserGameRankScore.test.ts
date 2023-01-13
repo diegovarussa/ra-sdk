@@ -4,7 +4,7 @@ import GameRankScoreItem from "../src/models/GameRankScoreItem";
 describe('User game rank and score test', function () {
 
     it('should have correct API result', async () => {
-        const rankScoreList = await client.getUserGameRankAndScore(gameId, userName);
+        const rankScoreList = await client.getUserGameRankAndScore(gameId);
         for (let i = 0; i < rankScoreList.length; i++) {
             const current = rankScoreList[i];
             expect(current).toBeInstanceOf(GameRankScoreItem);

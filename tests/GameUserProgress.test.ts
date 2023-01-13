@@ -1,11 +1,11 @@
-import { client, gameId, userName } from "../src/config";
+import { client, gameId } from "../src/config";
 import GameUserProgress from "../src/models/GameUserProgress";
 import GameAchievement from "../src/models/GameAchievement";
 
 describe('Game extended test', function () {
 
     it('should have correct API result', async () => {
-        const gameUserProgress = await client.getGameUserProgress(gameId, userName);
+        const gameUserProgress = await client.getGameUserProgress(gameId);
         expect(gameUserProgress).toBeInstanceOf(GameUserProgress);
         expect(typeof gameUserProgress.id).toStrictEqual('number');
         expect(typeof gameUserProgress.title).toStrictEqual('string');
