@@ -1,6 +1,6 @@
 {
   "name": "ra-sdk",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "SDK for easy access of the https://retroachievements.org/ API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
