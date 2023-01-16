@@ -25,6 +25,8 @@ describe('Game extended test', function () {
         expect(typeof gameUserProgress.numAchievements).toStrictEqual('number');
         expect(typeof gameUserProgress.numDistinctPlayersCasual).toStrictEqual('number');
         expect(typeof gameUserProgress.numDistinctPlayersHardcore).toStrictEqual('number');
+        expect(typeof gameUserProgress.userCompletion).toStrictEqual('number');
+        expect(typeof gameUserProgress.userCompletionHardcore).toStrictEqual('number');
         expect(typeof gameUserProgress.richPresencePatch).toStrictEqual('string');
 
         if (gameUserProgress.achievements.length) {

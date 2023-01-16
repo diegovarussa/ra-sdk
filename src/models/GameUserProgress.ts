@@ -39,7 +39,7 @@ export default class GameUserProgress extends Game {
         }
         this.numAwardedToUser = Number(json.NumAwardedToUser);
         this.numAwardedToUserHardcore = Number(json.NumAwardedToUserHardcore);
-        this.userCompletion = json.UserCompletion;
-        this.userCompletionHardcore = json.UserCompletionHardcore;
+        this.userCompletion = Number(json.UserCompletion.replace('%', ''));
+        this.userCompletionHardcore = Number(json.UserCompletionHardcore.replace('%', ''));
     }
 };
