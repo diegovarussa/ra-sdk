@@ -59,12 +59,16 @@ export default class Client {
     }
 
     private async _requestApi(url: string) {
-        const apiResult = await fetch(url);
-        if (apiResult.status > 399) {
-            throw new Error(`Invalid request, please check your parameters - ${apiResult.status}`);
+        try {
+            const apiResult = await fetch(url);
+            if (apiResult.status > 399) {
+                throw new Error(`Invalid request, please check your parameters - ${apiResult.status}`);
+            }
+            const json = await apiResult.json();
+            return json; 
+        } catch (error) {
+            throw new Error(String(error));
         }
-        const json = await apiResult.json();
-        return json;
     }
 
     /**
