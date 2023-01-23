@@ -10,7 +10,7 @@ describe('Achievement earned on day test', function () {
             expect(current).toBeInstanceOf(UserAchievement);
             expect(typeof current.id).toStrictEqual('number');
             expect(typeof current.author).toStrictEqual('string');
-            expect(typeof current.badgeName).toStrictEqual('number');
+            expect(typeof current.badgeName).toStrictEqual('string');
             expect(typeof current.badgeUrl).toStrictEqual('string');
             expect(typeof current.consoleName).toStrictEqual('string');
             expect(typeof current.cumulativeScore).toStrictEqual('number');

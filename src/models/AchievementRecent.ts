@@ -6,7 +6,7 @@ export default class AchievementRecent {
     /** Name of the game */
     gameTitle: string;
     /** Unique identifier of the badge image for the achievement */
-    badgeName: number;
+    badgeName: string;
     /** Title of the achievement */
     title: string;
     /** Description fo the achievement */
@@ -24,7 +24,7 @@ export default class AchievementRecent {
         this.id = Number(json.ID);
         this.gameId = Number(json.GameID);
         this.gameTitle = json.GameTitle;
-        this.badgeName = Number(json.BadgeName);
+        this.badgeName = json.BadgeName;
         this.title = json.Title;
         this.description = json.Description;
         this.points = Number(json.Points);

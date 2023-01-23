@@ -78,7 +78,7 @@ describe('User summary test', function () {
             expect(typeof current.title).toStrictEqual('string');
             expect(typeof current.description).toStrictEqual('string');
             expect(typeof current.points).toStrictEqual('number');
-            expect(typeof current.badgeName).toStrictEqual('number');
+            expect(typeof current.badgeName).toStrictEqual('string');
             expect(typeof current.gameId).toStrictEqual('number');
             expect(typeof current.gameTitle).toStrictEqual('string');
             expect(typeof current.isAwarded).toStrictEqual('number');

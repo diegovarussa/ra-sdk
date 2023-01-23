@@ -42,7 +42,7 @@ describe('Game extended test', function () {
             expect(typeof achievement.author).toStrictEqual('string');
             expect(isNaN(achievement.dateCreated.getDate())).toBeFalsy();
             expect(isNaN(achievement.dateModified.getDate())).toBeFalsy();
-            expect(typeof achievement.badgeName).toStrictEqual('number');
+            expect(typeof achievement.badgeName).toStrictEqual('string');
             expect(typeof achievement.displayOrder).toStrictEqual('number');
             expect(typeof achievement.memAddr).toStrictEqual('string');
 
