@@ -27,6 +27,7 @@ export default class GameUserProgress extends Game {
 
     constructor(json: any) {
         super(json);
+        this.gameTitle = this.title;
         this.isFinal = Boolean(json.IsFinal);
         this.numAchievements = Number(json.NumAchievements);
         this.numDistinctPlayersCasual = Number(json.NumDistinctPlayersCasual);

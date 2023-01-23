@@ -27,7 +27,13 @@ export default class Client {
     private _userName: string;
     private _webApiKey: string;
     private _corsProxy: string;
-    public BASE_MEDIA_URL = 'https://media.retroachievements.org';
+    
+    /** Base url to fetch media */
+    public static MEDIA_URL = 'https://media.retroachievements.org';
+    /** Base url to fetch the user picture */
+    public static USER_MEDIA_URL = `${Client.MEDIA_URL}/UserPic`;
+    /** Base url to fetch the badge picture */
+    public static BADGE_MEDIA_URL = 'https://s3-eu-west-1.amazonaws.com/i.retroachievements.org/Badge';
 
     public constructor(userName: string, webApiKey: string, corsProxy: string = 'https://corsproxy.io/?') {
         this._userName = userName;
