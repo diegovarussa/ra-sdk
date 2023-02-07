@@ -83,37 +83,37 @@ const client = new Client('youUserName', 'yourWebApiKey');
 
   ```js
   [
-      UserTopTen { name: 'MaxMilyin', points: 348687, retroRatio: 1001566 },
-      UserTopTen {
-        name: 'HippopotamusRex',
-        points: 314940,
-        retroRatio: 1193974
-      },
-      UserTopTen { name: 'Sarconius', points: 260080, retroRatio: 1175577 },
-      UserTopTen { name: 'guineu', points: 243826, retroRatio: 678515 },
-      UserTopTen {
-        name: 'Andrey199650',
-        points: 241322,
-        retroRatio: 571014
-      },
-      UserTopTen { name: 'Wendigo', points: 231206, retroRatio: 1102330 },
-      UserTopTen {
-        name: 'donutweegee',
-        points: 210093,
-        retroRatio: 602855
-      },
-      UserTopTen { name: 'Infernum', points: 204931, retroRatio: 713560 },
-      UserTopTen {
-        name: 'AmericanNinja',
-        points: 204226,
-        retroRatio: 569431
-      },
-      UserTopTen {
-        name: 'FabricioPrie',
-        points: 198120,
-        retroRatio: 458509
-      }
-    ]
+    UserTopTen { name: 'MaxMilyin', points: 348687, retroRatio: 1001566 },
+    UserTopTen {
+      name: 'HippopotamusRex',
+      points: 314940,
+      retroRatio: 1193974
+    },
+    UserTopTen { name: 'Sarconius', points: 260080, retroRatio: 1175577 },
+    UserTopTen { name: 'guineu', points: 243826, retroRatio: 678515 },
+    UserTopTen {
+      name: 'Andrey199650',
+      points: 241322,
+      retroRatio: 571014
+    },
+    UserTopTen { name: 'Wendigo', points: 231206, retroRatio: 1102330 },
+    UserTopTen {
+      name: 'donutweegee',
+      points: 210093,
+      retroRatio: 602855
+    },
+    UserTopTen { name: 'Infernum', points: 204931, retroRatio: 713560 },
+    UserTopTen {
+      name: 'AmericanNinja',
+      points: 204226,
+      retroRatio: 569431
+    },
+    UserTopTen {
+      name: 'FabricioPrie',
+      points: 198120,
+      retroRatio: 458509
+    }
+  ]
 
   ```
 </details>
@@ -459,27 +459,28 @@ GameUserProgress {
   <summary>Result</summary>
 
   ```js
-      CommentItem {
-        user: 'completos',
-        date: 2022-06-11T14:43:00.000Z,
-        comment: 'MASTERED!'
-      },
-      CommentItem {
-        user: 'SRamos',
-        date: 2022-06-26T19:53:00.000Z,
-        comment: 'Mastered :)'
-      },
-      CommentItem {
-        user: 'Omegaelnegro',
-        date: 2022-07-02T22:58:00.000Z,
-        comment: 'Achievements for the Spain version plz'
-      },
-      CommentItem {
-        user: 'LilacChicky',
-        date: 2022-07-05T19:27:00.000Z,
-        comment: 'Mastered! This is a good place to start doing Pokémon cheevos due to it being a remake of the first games and the relatively simple goals. Bulbapedia and the speed-up key will definitely be your friends. Incidentally, the guy that gave me my copy back in the Diamond/Pearl days insisted I call it LuigiGreen...and I still do! XD'
-      }
-    ]
+  [
+    CommentItem {
+      user: 'completos',
+      date: 2022-06-11T14:43:00.000Z,
+      comment: 'MASTERED!'
+    },
+    CommentItem {
+      user: 'SRamos',
+      date: 2022-06-26T19:53:00.000Z,
+      comment: 'Mastered :)'
+    },
+    CommentItem {
+      user: 'Omegaelnegro',
+      date: 2022-07-02T22:58:00.000Z,
+      comment: 'Achievements for the Spain version plz'
+    },
+    CommentItem {
+      user: 'LilacChicky',
+      date: 2022-07-05T19:27:00.000Z,
+      comment: 'Mastered! This is a good place to start doing Pokémon cheevos due to it being a remake of the first games and the relatively simple goals. Bulbapedia and the speed-up key will definitely be your friends. Incidentally, the guy that gave me my copy back in the Diamond/Pearl days insisted I call it LuigiGreen...and I still do! XD'
+    }
+  ]
 
   ```
 </details>
@@ -496,28 +497,28 @@ GameUserProgress {
   <summary>Result</summary>
 
   ```js
-[
-      CommentItem {
-        user: 'BerserkerBR',
-        date: 2018-08-08T02:18:00.000Z,
-        comment: 'stage 3. Stand in a specific point in the mountains. It triggers a special animation'
-      },
-      CommentItem {
-        user: 'QRS666',
-        date: 2020-08-28T15:57:00.000Z,
-        comment: 'I still do not get this one :/ Any hint would be nice, thanks!'
-      },
-      CommentItem {
-        user: 'xcommander',
-        date: 2020-11-20T21:31:00.000Z,
-        comment: "This can be triggered in any stage, as long as you're on the edge of a platform. Wait for a few seconds and the animation will be triggered."
-      },
-      CommentItem {
-        user: 'jago2077',
-        date: 2021-09-10T23:34:00.000Z,
-        comment: 'like he s falling waoooooow'
-      }
-    ]
+  [
+    CommentItem {
+      user: 'BerserkerBR',
+      date: 2018-08-08T02:18:00.000Z,
+      comment: 'stage 3. Stand in a specific point in the mountains. It triggers a special animation'
+    },
+    CommentItem {
+      user: 'QRS666',
+      date: 2020-08-28T15:57:00.000Z,
+      comment: 'I still do not get this one :/ Any hint would be nice, thanks!'
+    },
+    CommentItem {
+      user: 'xcommander',
+      date: 2020-11-20T21:31:00.000Z,
+      comment: "This can be triggered in any stage, as long as you're on the edge of a platform. Wait for a few seconds and the animation will be triggered."
+    },
+    CommentItem {
+      user: 'jago2077',
+      date: 2021-09-10T23:34:00.000Z,
+      comment: 'like he s falling waoooooow'
+    }
+  ]
   ```
 </details>
 
