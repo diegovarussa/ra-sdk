@@ -22,7 +22,6 @@
 ![Version](https://img.shields.io/github/package-json/v/diegovarussa/ra-sdk)
 [![GitHub Issues](https://img.shields.io/github/issues/diegovarussa/ra-sdk.svg)](https://github.com/diegovarussa/ra-sdk/issues) 
 ![Repo Size](https://img.shields.io/github/repo-size/diegovarussa/ra-sdk)
-![Visitors](https://visitor-badge.glitch.me/badge?page_id=diegovarussa.ra-sdk)
 
 # Introduction
 RA SDK (RetroAchievements SDK) offers a high-level object-oriented abstraction to fetch [RA API](https://github.com/RetroAchievements/RAWeb/tree/master/public/API) with full typing support and extra features.
